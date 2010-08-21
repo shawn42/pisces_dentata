@@ -1,25 +1,16 @@
 package
 {
-	import org.flixel.*;
+	import net.flashpunk.*;
+	import net.flashpunk.graphics.*;
 
-  public class Player extends FlxSprite
+  public class Player extends Entity
   {
-    [Embed(source = '../assets/male_angler.png')]private var MaleAnglerImg:Class;
-    private var speed:Number = 0.8;
+    [Embed(source = '../assets/male_angler.png')]
+    private const PLAYER:Class;
 
-    public function Player(x:Number, y:Number) 
+    public function Player()
     {
-      super(x,y,MaleAnglerImg);
+      graphic = new Image(PLAYER);
     } 
-
-    override public function update():void
-    {
-      var x_vel:Number = (FlxG.mouse.screenX - FlxG.width/2) * speed;
-      var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * speed;
-      
-      velocity = new FlxPoint(x_vel,y_vel);
-
-      super.update();
-    }
   }
 }

@@ -1,5 +1,5 @@
 task :default do
   cd 'src' do
-    sh 'mxmlc PiscesDentata.as && open -a Firefox PiscesDentata.swf'
+    sh 'mxmlc Main.as --target-player=10.0.0 && open -a Firefox Main.swf'
   end
 end
