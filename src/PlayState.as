@@ -37,14 +37,12 @@ package
 
       FlxG.mouse.show();
       FlxU.setWorldBounds(0, 0, 1320, 1240);
+      
+      add(new HolePunch([female]));
 		}
 
     override public function update():void
     {
-      FlxG.log(FlxQuadTree.bounds.x);
-      FlxG.log(FlxQuadTree.bounds.y);
-      FlxG.log(FlxQuadTree.bounds.width);
-      FlxG.log(FlxQuadTree.bounds.height);
       super.update();
       collide();
     }
