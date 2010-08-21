@@ -18,7 +18,7 @@ package
       var bg:FlxSprite = new FlxSprite(0, 0, SeaBackgroundImg);
       add(bg);
 
-      player = new FlxSprite(32, 70, MaleAnglerImg);
+      player = new FlxSprite(232, 90, MaleAnglerImg);
       add(player);
       FlxG.followTarget = player;
 
@@ -37,20 +37,16 @@ package
       particles.start(false, 0.2);
 
       FlxG.mouse.show();
-      FlxG.mouse.screenX = FlxG.width/2;
-      FlxG.mouse.screenY = FlxG.height/2;
-
-			//add(new FlxText(0,0,100,"INSERT GAME HERE"));
 		}
 
     override public function update():void
     {
       super.update();
-      //var playerSpeed:Number = 0.05;
-      //var x_vel:Number = (FlxG.mouse.screenX - FlxG.width/2) * playerSpeed;
-      //var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * playerSpeed;
+      var playerSpeed:Number = 0.8;
+      var x_vel:Number = (FlxG.mouse.screenX - FlxG.width/2) * playerSpeed;
+      var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * playerSpeed;
       
-      //player.velocity = new FlxPoint(player.x+x_vel,player.y+y_vel);
+      player.velocity = new FlxPoint(x_vel,y_vel);
     }
 	}
 }
