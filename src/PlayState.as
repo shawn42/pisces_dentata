@@ -6,6 +6,7 @@ package
 	{
     [Embed(source = '../assets/female_angler.png')]private var FemaleAnglerImg:Class;
     [Embed(source = '../assets/sediment_parts.png')]private var SedimentPartsImg:Class;
+    [Embed(source = '../assets/floor.png')] private var FloorImg:Class;
 
     private var particles:FlxEmitter;
     private var player:Player;
@@ -13,8 +14,8 @@ package
 
 		override public function create():void
 		{
-      add(world = new World());
       add(new Background());
+      add(world = new World());
 
       player = new Player(232, 90);
       add(player);
@@ -35,11 +36,17 @@ package
       particles.start(false, 0.2);
 
       FlxG.mouse.show();
+      FlxU.setWorldBounds(0, 0, 1320, 1240);
 		}
 
     override public function update():void
     {
+      FlxG.log(FlxQuadTree.bounds.x);
+      FlxG.log(FlxQuadTree.bounds.y);
+      FlxG.log(FlxQuadTree.bounds.width);
+      FlxG.log(FlxQuadTree.bounds.height);
       super.update();
+      collide();
     }
 	}
 }
