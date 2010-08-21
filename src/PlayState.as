@@ -13,9 +13,11 @@ package
     private var particles:FlxEmitter;
 
     private var player:FlxSprite;
+    private var bg:FlxSprite;
+
 		override public function create():void
 		{
-      var bg:FlxSprite = new FlxSprite(0, 0, SeaBackgroundImg);
+      bg = new FlxSprite(0, 0, SeaBackgroundImg);
       add(bg);
 
       player = new FlxSprite(232, 90, MaleAnglerImg);
@@ -47,6 +49,9 @@ package
       var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * playerSpeed;
       
       player.velocity = new FlxPoint(x_vel,y_vel);
+
+      bg.x = -FlxG.scroll.x
+      bg.y = -FlxG.scroll.y
     }
 	}
 }
