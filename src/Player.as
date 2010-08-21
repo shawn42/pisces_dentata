@@ -1,25 +1,38 @@
 package
 {
-	import org.flixel.*;
+	import net.flashpunk.*;
+	import net.flashpunk.graphics.*;
+	import net.flashpunk.utils.*;
+  import net.flashpunk.masks.*;
 
-  public class Player extends FlxSprite
+  public class Player extends Entity
   {
-    [Embed(source = '../assets/male_angler.png')]private var MaleAnglerImg:Class;
-    private var speed:Number = 0.8;
+    [Embed(source = '../assets/male_angler.png')]
+    private const IMAGE:Class;
+    [Embed(source = '../assets/male_angler_mask.png')]
+    private const MASK:Class;
 
-    public function Player(x:Number, y:Number) 
+    public function Player()
     {
-      super(x,y,MaleAnglerImg);
+      var image:Image = new Image(IMAGE);
+      var pixelmask:Pixelmask = new Pixelmask(MASK);
+      mask = pixelmask;
+      graphic = image;
+      type = "Player";
+      width = image.width;
+      height = image.height;
     } 
 
     override public function update():void
     {
-      var x_vel:Number = (FlxG.mouse.screenX - FlxG.width/2) * speed;
-      var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * speed;
-      
-      velocity = new FlxPoint(x_vel,y_vel);
-
-      super.update();
+      var speed:Number = 0.2;
+      x += speed * FP.elapsed * (Input.mouseX - FP.width / 2);
+      y += speed * FP.elapsed * (Input.mouseY - FP.height / 2);
+      var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
+      if (femaleAngler)
+      {
+        FP.world.remove(this);
+      }
     }
   }
 }
