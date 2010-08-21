@@ -33,6 +33,8 @@ package
       player.x = 200;
       player.y = 200;
       add(player);
+      
+      add(new HolePunch([femaleAngler]));
     }
 
     override public function update():void
