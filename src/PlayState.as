@@ -8,11 +8,12 @@ package
     [Embed(source = '../assets/sediment_parts.png')]private var SedimentPartsImg:Class;
 
     private var particles:FlxEmitter;
-
     private var player:Player;
+    private var world:World;
 
 		override public function create():void
 		{
+      add(world = new World());
       add(new Background());
 
       player = new Player(232, 90);
