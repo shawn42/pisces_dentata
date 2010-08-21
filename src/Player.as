@@ -31,7 +31,7 @@ package
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {
-      /*  FP.world.remove(this);*/
+        FP.world.remove(this);
       }
     }
   }
