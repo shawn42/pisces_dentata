@@ -4,23 +4,18 @@ package
 
 	public class PlayState extends FlxState
 	{
-    [Embed(source = '../assets/male_angler.png')]private var MaleAnglerImg:Class;
     [Embed(source = '../assets/female_angler.png')]private var FemaleAnglerImg:Class;
-    [Embed(source = '../assets/sea_background.png')]private var SeaBackgroundImg:Class;
     [Embed(source = '../assets/sediment_parts.png')]private var SedimentPartsImg:Class;
-
 
     private var particles:FlxEmitter;
 
-    private var player:FlxSprite;
-    private var bg:FlxSprite;
+    private var player:Player;
 
 		override public function create():void
 		{
-      bg = new FlxSprite(0, 0, SeaBackgroundImg);
-      add(bg);
+      add(new Background());
 
-      player = new FlxSprite(232, 90, MaleAnglerImg);
+      player = new Player(232, 90);
       add(player);
       FlxG.followTarget = player;
 
@@ -44,14 +39,6 @@ package
     override public function update():void
     {
       super.update();
-      var playerSpeed:Number = 0.8;
-      var x_vel:Number = (FlxG.mouse.screenX - FlxG.width/2) * playerSpeed;
-      var y_vel:Number = (FlxG.mouse.screenY - FlxG.height/2) * playerSpeed;
-      
-      player.velocity = new FlxPoint(x_vel,y_vel);
-
-      bg.x = -FlxG.scroll.x
-      bg.y = -FlxG.scroll.y
     }
 	}
 }
