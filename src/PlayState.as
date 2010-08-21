@@ -21,7 +21,23 @@ package
       add(player);
       FlxG.followTarget = player;
 
-      var female:FlxSprite = new FlxSprite(220, 70, FemaleAnglerImg);
+      var female:FlxSprite = new FlxSprite(500, 500, FemaleAnglerImg);
+      var femaleWidth = 259;
+      var femaleHeight = 189;
+      female.colOffsets.splice();
+      female.colOffsets.push(new FlxPoint(-126, 128));
+      female.colOffsets.push(new FlxPoint(-65, 40));
+      female.colOffsets.push(new FlxPoint(20, 85));
+      female.colOffsets.push(new FlxPoint(67, 92));
+      female.colOffsets.push(new FlxPoint(127, 27));
+      female.colOffsets.push(new FlxPoint(125, -13));
+      female.colOffsets.push(new FlxPoint(57, -64));
+      female.colOffsets.push(new FlxPoint(-12, -83));
+      female.colOffsets.push(new FlxPoint(-84, -92));
+      /*female.colOffsets[0] = new FlxPoint(55 - femaleWidth / 2, 55 - femaleHeight / 2);*/
+      /*female.colOffsets.push(new FlxPoint(256 - femaleWidth / 2, 106 - femaleHeight / 2));*/
+      /*female.colOffsets.push(new FlxPoint(199 - femaleWidth / 2, 148 - femaleHeight / 2));*/
+      /*female.colOffsets.push(new FlxPoint(48 - femaleWidth / 2, 186 - femaleHeight / 2));*/
       add(female);
 
       add(particles = new FlxEmitter(0, -20));
@@ -36,8 +52,7 @@ package
       particles.start(false, 0.2);
 
       FlxG.mouse.show();
-      FlxU.setWorldBounds(0, 0, 1320, 1240);
-      
+      FlxU.setWorldBounds(-320, -240, 1640, 1480);
       add(new HolePunch([female]));
 		}
 
