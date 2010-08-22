@@ -11,7 +11,9 @@ package
 
     public var player:Player;
     public var backdrop:MyBackdrop;
-    public var femaleAngler:FemaleAngler;
+    
+    public var females:Array;
+    
     public var tilemap:Tilemap;
 
     public function MyWorld()
@@ -32,15 +34,20 @@ package
       var ceiling:Ceiling = new Ceiling();
       add(ceiling);
 
-      add(femaleAngler = new FemaleAngler());
-      femaleAngler.x = 400;
-      femaleAngler.y = 400;
+      females = new Array();
+      var femaleAngler:FemaleAngler;
+      add(femaleAngler = new FemaleAngler(400,400));
+      females.push(femaleAngler);
+      
+      add(femaleAngler = new FemaleAngler(750,300));
+      females.push(femaleAngler);
+      
       player = new Player();
       player.x = 100;
       player.y = 100;
       add(player);
       
-      add(new HolePunch([femaleAngler]));
+      add(new HolePunch(females));
     }
 
     override public function update():void

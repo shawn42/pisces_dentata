@@ -12,7 +12,7 @@ package
     [Embed(source = '../assets/female_angler_mask.png')]
     private const MASK:Class;
 
-    public function FemaleAngler()
+    public function FemaleAngler(initX:Number,initY:Number)
     {
       var image:Image = new Image(IMAGE);
       var pixelmask:Pixelmask = new Pixelmask(MASK);
@@ -21,6 +21,8 @@ package
       type = "FemaleAngler";
       width = image.width;
       height = image.height;
+      x = initX;
+      y = initY;
     } 
 
     /*override public function update():void*/
