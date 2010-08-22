@@ -7,8 +7,8 @@ package
   
   public class OpeningWorld extends World
   {
-    [Embed(source = '../assets/AmbientBeat1.mp3')]
-    private const AmbientMusic:Class;
+//    [Embed(source = '../assets/AmbientBeat1.mp3')]
+//    private const AmbientMusic:Class;
     [Embed(source = '../assets/male_angler.png')]
     private const PlayerImage:Class;
 
@@ -18,8 +18,8 @@ package
     
     public function OpeningWorld()
     {
-      var music:Sfx = new Sfx(AmbientMusic);
-      music.loop();
+//      var music:Sfx = new Sfx(AmbientMusic);
+//      music.loop();
 
       femaleAngler = new FemaleAngler(320, 200);
       femaleAngler.flip(true);

@@ -4,6 +4,7 @@ package
 	import net.flashpunk.graphics.*;
 	import net.flashpunk.utils.*;
   import net.flashpunk.masks.*;
+  import net.flashpunk.tweens.misc.*;
   import flash.geom.*;
 
   public class Player extends Entity
@@ -23,6 +24,8 @@ package
     public var allowMoveRight:Boolean = true;
     private var spot:Image;
     private var image:Image;
+    private var deathWait:Number = 0;
+    private var dead:Boolean = false;
     
     private var followSpeed:Number = 0.3;
 
@@ -71,14 +74,24 @@ package
         y += dy;
       }
       
+      deathWait += FP.elapsed;
+      if (deathWait > 1 && dead) {
+        FP.world = Main.deathWorld;
+        deathWait = 0;
+        dead = false;
+      };
+
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {
         var growl:Sfx = new Sfx(FishGrowlSnd);
         growl.play();
-        FP.world.remove(this);
+        //FP.world.remove(this);
+        x = 100;
+        y = 100;
+        dead = true;
       }
-    }
+    } 
     
     override public function render():void {
 //      HolePunch.darkness.drawGraphic(x-(spot.width/2)+(width/2),  y-(spot.height/2)+(height/2), spot);
