@@ -18,8 +18,12 @@ package
       backdropEntity.graphic = backdrop;
       add(backdropEntity);
     
-      var seaBed:SeaBed = new SeaBed();
-      add(seaBed);
+      var rightWall:RightWall = new RightWall();
+      add(rightWall);
+      var leftWall:LeftWall = new LeftWall();
+      add(leftWall);
+      var floor:Floor = new Floor();
+      add(floor);
 
       add(femaleAngler = new FemaleAngler());
       player = new Player();
