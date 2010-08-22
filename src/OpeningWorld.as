@@ -21,9 +21,7 @@ package
       var music:Sfx = new Sfx(AmbientMusic);
       music.loop();
 
-      femaleAngler = new FemaleAngler();
-      femaleAngler.x = 320;
-      femaleAngler.y = 200;
+      femaleAngler = new FemaleAngler(320, 200);
       femaleAngler.flip(true);
       
       var playerImage:Image = new Image(PlayerImage);
