@@ -78,6 +78,11 @@ package
         growl.play();
         FP.world.remove(this);
       }
+      var enemy:Entity = collide("Enemy", x, y);
+      if (enemy)
+      {
+        FP.world.remove(this);
+      }
     }
     
     override public function render():void {

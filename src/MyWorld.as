@@ -47,6 +47,8 @@ package
       
       add(femaleAngler = new FemaleAngler(750,300));
       females.push(femaleAngler);
+
+      add(new Monkfish(200, 960));
       
       player = new Player();
       player.x = 100;
