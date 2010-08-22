@@ -27,6 +27,7 @@ package
 
     override public function update():void
     {
+<<<<<<< HEAD
       var speed:Number = 0.2;
       velocity = new Point(
         speed * (Input.mouseX - FP.width / 2),
@@ -34,6 +35,11 @@ package
       );
       x += velocity.x * FP.elapsed;
       y += velocity.y * FP.elapsed;
+=======
+      var speed:Number = 0.9;
+      x += speed * FP.elapsed * (Input.mouseX - FP.width / 2);
+      y += speed * FP.elapsed * (Input.mouseY - FP.height / 2);
+>>>>>>> aef5eef8d76caba0f44551a5bb866095da12fca4
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {

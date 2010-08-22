@@ -11,9 +11,6 @@ package
     public var femaleAngler:FemaleAngler;
     public var tilemap:Tilemap;
 
-    [Embed(source = '../assets/floor.png')]
-    private const TILEMAP_IMAGE:Class;
-
     public function MyWorld()
     {
       backdrop = new MyBackdrop();
@@ -21,18 +18,20 @@ package
       backdropEntity.graphic = backdrop;
       add(backdropEntity);
     
-      tilemap = new Tilemap(TILEMAP_IMAGE, 320, 1000, 16, 16);
-      tilemap.x = -320;
-      tilemap.y = 0;
-      var tilemapEntity:Entity = new Entity();
-      tilemapEntity.graphic = tilemap;
-      /*add(tilemapEntity);*/
+      var rightWall:RightWall = new RightWall();
+      add(rightWall);
+      var leftWall:LeftWall = new LeftWall();
+      add(leftWall);
+      var floor:Floor = new Floor();
+      add(floor);
 
       add(femaleAngler = new FemaleAngler());
       player = new Player();
       player.x = 200;
       player.y = 200;
       add(player);
+      
+      //add(new HolePunch([femaleAngler]));
     }
 
     override public function update():void
