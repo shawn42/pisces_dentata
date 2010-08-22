@@ -17,5 +17,20 @@ package
       rightTilemap.setRegion(0,0, 20, 64,0);
       graphic = rightTilemap;
     }
+    
+    override public function update():void
+    {
+      super.update();
+      var player:Player = collide("Player", x, y) as Player;
+      if (player)
+      {
+        player.allowMoveRight = false;
+      }
+      else
+      {
+        player.allowMoveRight = true;
+      }
+    }
+
   }
 }

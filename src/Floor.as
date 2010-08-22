@@ -19,5 +19,20 @@ package
 
       graphic = floorTilemap;
     }
+    
+    override public function update():void
+    {
+      super.update();
+      var player:Player = collide("Player", x, y) as Player;
+      if (player)
+      {
+        player.allowMoveDown = false;
+      }
+      else
+      {
+        player.allowMoveDown = true;
+      }
+    }
+
   }
 }

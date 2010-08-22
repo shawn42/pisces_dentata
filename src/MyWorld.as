@@ -29,6 +29,8 @@ package
       add(leftWall);
       var floor:Floor = new Floor();
       add(floor);
+      //var ceiling:Ceiling = new Ceiling();
+      //add(ceiling);
 
       add(femaleAngler = new FemaleAngler());
       player = new Player();
