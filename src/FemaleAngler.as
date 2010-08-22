@@ -14,7 +14,7 @@ package
 
     private var image:Image;
     
-    public function FemaleAngler()
+    public function FemaleAngler(initX:Number,initY:Number)
     {
       image = new Image(IMAGE);
       var pixelmask:Pixelmask = new Pixelmask(MASK);
@@ -23,6 +23,8 @@ package
       type = "FemaleAngler";
       width = image.width;
       height = image.height;
+      x = initX;
+      y = initY;
     } 
     
     public function flip(flipped:Boolean):void {
