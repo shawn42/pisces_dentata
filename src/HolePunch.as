@@ -8,12 +8,14 @@ package
 	
   public class HolePunch extends Entity
   {
-    [Embed(source="../assets/light.png")] private var LightImageClass:Class;
-    [Embed(source="../assets/spot.png")] private var SpotImageClass:Class;
+    [Embed(source="../assets/light.png")] private const LightImageClass:Class;
+    [Embed(source="../assets/spot.png")] private const SpotImageClass:Class;
+    [Embed(source="../assets/male_spot.png")] private const MaleSpotImageClass:Class;
 
-    private var darkness:Canvas;
+    public static var darkness:Canvas;
     private var light:Image;
     private var spot:Image;
+    private var maleSpot:Image;
     private var light_sources:Array;
     private var xOffset:Number;
     private var yOffset:Number;
@@ -27,37 +29,30 @@ package
       darkness.blend = "multiply";
 
       light = new Image(LightImageClass);
-      light.scaleX = 1;
-      light.scaleY = 1;
       light.blend = "screen";
       
       spot = new Image(SpotImageClass);
-      spot.scaleX = 1;
-      spot.scaleY = 1;
-      spot.blend = "add";
-                                      
-      xOffset = 140        
-      yOffset = 40
-      
-    }
-    
-    override public function update():void {
-      // TODO tweak these for a nice flicker effect
-      xOffset += (Math.random()*20 - 10) * FP.elapsed;
-      yOffset += (Math.random()*20 - 10) * FP.elapsed;
+      spot.blend = "add";      
+
+      maleSpot = new Image(MaleSpotImageClass);
+      maleSpot.blend = "screen";
     }
                                                        
     override public function render():void {
       super.render();
       darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x1a1a1a);
+      var p:Player = Player.instance;
+      darkness.drawGraphic(p.x-FP.camera.x-(maleSpot.width/2)+(p.width/2),  p.y-FP.camera.y-(maleSpot.height/2)+(p.height/2), maleSpot);
       var tx:Number = 0.0;
       var ty:Number = 0.0;
       for (var i:Number=0; i<light_sources.length;i++){                                         
         var source_obj:Entity = light_sources[i];
-        tx = source_obj.x-FP.camera.x-source_obj.width/2+xOffset;
-        ty = source_obj.y-FP.camera.y-source_obj.height/2-yOffset;  
-        darkness.drawGraphic(tx, ty, light);
-        spot.render(new Point(source_obj.x-source_obj.width/2+xOffset,source_obj.y-source_obj.height/2-yOffset), FP.camera);
+        darkness.drawGraphic(
+          source_obj.x-FP.camera.x-source_obj.width/2+140+(Math.random()*4 - 2),
+          source_obj.y-FP.camera.y-source_obj.height/2-40+(Math.random()*4 - 2), light);
+        spot.render(new Point(
+          source_obj.x+source_obj.width-72,
+          source_obj.y-source_obj.height/2+132), FP.camera);
       }
                                                                                           
       darkness.render(new Point(0,0), FP.camera); 

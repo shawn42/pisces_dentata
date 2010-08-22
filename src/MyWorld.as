@@ -36,8 +36,8 @@ package
       femaleAngler.x = 400;
       femaleAngler.y = 400;
       player = new Player();
-      player.x = 300;
-      player.y = 300;
+      player.x = 100;
+      player.y = 100;
       add(player);
       
       add(new HolePunch([femaleAngler]));
