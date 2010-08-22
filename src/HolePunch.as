@@ -24,7 +24,7 @@ package
     {
       light_sources = sources;
       darkness = new Canvas(FP.width, FP.height);
-      darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x1a1a1a);
+      darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x404040);
       darkness.scrollX = darkness.scrollY = 0;
       darkness.blend = "multiply";
 
@@ -40,7 +40,7 @@ package
                                                        
     override public function render():void {
       super.render();
-      darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x1a1a1a);
+      darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x404040);
       var p:Player = Player.instance;
       darkness.drawGraphic(p.x-FP.camera.x-(maleSpot.width/2)+(p.width/2),  p.y-FP.camera.y-(maleSpot.height/2)+(p.height/2), maleSpot);
       var tx:Number = 0.0;
