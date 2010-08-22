@@ -17,7 +17,7 @@ package
     public function MyWorld()
     {
       var music:Sfx = new Sfx(AmbientMusic);
-//      music.loop();
+      music.loop();
       backdrop = new MyBackdrop();
       var backdropEntity:Entity = new Entity();
       backdropEntity.graphic = backdrop;
