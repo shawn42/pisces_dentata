@@ -1,6 +1,7 @@
 package
 {
-	import net.flashpunk.*;
+  import net.flashpunk.*;
+	import net.flashpunk.debug.*;
 	import net.flashpunk.graphics.*;
   import flash.geom.*;
 	import net.flashpunk.utils.*;
@@ -10,7 +11,7 @@ package
     [Embed(source = '../assets/Ambient1.mp3')]
     private const AmbientMusic:Class;
     
-    [Embed(source = '../assets/sediment_parts.png')]
+    [Embed(source = '../assets/sediment_parts1.png')]
     private const SedimentPartsImg:Class;
 
     public var player:Player;
@@ -19,7 +20,7 @@ package
     public var females:Array;
     
     public var tilemap:Tilemap;
-    private var _em:Emitter;
+    private var sedimentEmitter:Emitter;
 
     public function MyWorld()
     {
@@ -52,30 +53,39 @@ package
       player.y = 100;
       add(player);
       
-      
-      _em = new Emitter(SedimentPartsImg, 5, 5);
-			_em.newType("animated", [0, 1, 2]);
-			_em.setAlpha("animated", 1, 0);
-			_em.setMotion("animated", 0, 0, 0.4, 0, 5, 0.8, Ease.backIn);
-      
+      FP.console.enable();
+        
+      sedimentEmitter = new Emitter(SedimentPartsImg, 8, 8);
+			sedimentEmitter.newType("sediment", [0, 1, 2, 3]);
+			sedimentEmitter.setAlpha("sediment", 1, 0);
+			sedimentEmitter.setMotion("sediment", 0, 10, 600, 360, 5, 300);
+//			if(sedimentEmitter.particleCount < 10)
+//      {
+//        sedimentEmitter.emit("sediment", FP.rand(1024), FP.rand(800));
+        //sedimentEmitter.emit("sediment", FP.world.mouseX, FP.world.mouseY);
+//      }
       add(new HolePunch(females));
     }
-
+    
     override public function update():void
     {
-      super.update();
-      while(_em.particleCount < 50) {
-       _em.emit("animated", FP.rand(FP.width), FP.rand(FP.height));
-       // _em.emit("animated", FP.screen.mouseX, FP.screen.mouseY);
-      }
-      
       FP.camera = new Point(player.x - (FP.width - player.width) / 2, player.y - (FP.height - player.height) / 2);
+      //if (Input.mouseDown)
+      //{
+      
+      if(sedimentEmitter.particleCount < 100)
+      {
+        sedimentEmitter.emit("sediment", FP.rand(1024), FP.rand(800));
+        //sedimentEmitter.emit("sediment", FP.world.mouseX, FP.world.mouseY);
+      }
+      sedimentEmitter.update();
+      super.update();
     }
     
     override public function render():void
-    {
+    {      
       super.render();
-      _em.render(new Point, FP.camera);
+      sedimentEmitter.render(new Point, FP.camera);
     }
   }
 }
