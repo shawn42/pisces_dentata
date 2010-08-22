@@ -11,26 +11,26 @@ package
     public function Floor()
     {
       super();
-
+      type = "Wall";
       var floorTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, 1664, 240, 16, 16);
-      floorTilemap.x = -320;
-      floorTilemap.y = 1024;
       floorTilemap.setRegion(0,0, 104, 15,0);
-
       graphic = floorTilemap;
+      width = 1664;
+      height = 240;
+      x = -320;
+      y = 1024;
     }
     
     override public function update():void
     {
       super.update();
-      var player:Player = collide("Player", x, y) as Player;
-      if (player)
+      if (collide("Player", x, y))
       {
-        player.allowMoveDown = false;
+        Player.instance.allowMoveDown = false;
       }
       else
       {
-        player.allowMoveDown = true;
+        Player.instance.allowMoveDown = true;
       }
     }
 

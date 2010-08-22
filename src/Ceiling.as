@@ -18,14 +18,13 @@ package
     override public function update():void
     {
       super.update();
-      var player:Player = collide("Player", x, y) as Player;
-      if (player)
+      if (collide("Player", x, y))
       {
-        player.allowMoveUp = false;
+        Player.instance.allowMoveUp = false;
       } 
       else 
       {
-        player.allowMoveUp = true;
+        Player.instance.allowMoveUp = true;
       }
     }
   }

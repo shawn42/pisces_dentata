@@ -7,7 +7,7 @@ package
   public class MyWorld extends World
   {
     [Embed(source = '../assets/Ambient1.mp3')]
-    private const AmbiantMusic:Class;
+    private const AmbientMusic:Class;
 
     public var player:Player;
     public var backdrop:MyBackdrop;
@@ -16,8 +16,8 @@ package
 
     public function MyWorld()
     {
-      var music:Sfx = new Sfx(AmbiantMusic);
-      music.loop();
+      var music:Sfx = new Sfx(AmbientMusic);
+//      music.loop();
       backdrop = new MyBackdrop();
       var backdropEntity:Entity = new Entity();
       backdropEntity.graphic = backdrop;
@@ -29,13 +29,15 @@ package
       add(leftWall);
       var floor:Floor = new Floor();
       add(floor);
-      //var ceiling:Ceiling = new Ceiling();
-      //add(ceiling);
+      var ceiling:Ceiling = new Ceiling();
+      add(ceiling);
 
       add(femaleAngler = new FemaleAngler());
+      femaleAngler.x = 400;
+      femaleAngler.y = 400;
       player = new Player();
-      player.x = 200;
-      player.y = 200;
+      player.x = 300;
+      player.y = 300;
       add(player);
       
       //add(new HolePunch([femaleAngler]));

@@ -11,26 +11,27 @@ package
     public function LeftWall()
     {
       super();
-      var tilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, 320, 1024, 16, 16);
-      tilemap.x = -320;
-      tilemap.y = 0;
-      tilemap.setRegion(0,0, 20, 64,0);
-      graphic = tilemap;
+      type = "Wall";
+      var leftTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, 320, 1024, 16, 16);
+      x = -320;
+      y = 0;
+      leftTilemap.setRegion(0, 0, 20, 64, 0);
+      graphic = leftTilemap;
+      width = 320;
+      height = 1024;
     }
 
     override public function update():void
     {
       super.update();
-      var player:Player = collide("Player", x, y) as Player;
-      if (player)
+      if (collide("Player", x, y))
       {
-        player.allowMoveLeft = false;
+        Player.instance.allowMoveLeft = false;
       }
       else
       {
-        player.allowMoveLeft = true;
+        Player.instance.allowMoveLeft = true;
       }
     }
-
   }
 }
