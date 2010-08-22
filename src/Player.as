@@ -7,6 +7,9 @@ package
 
   public class Player extends Entity
   {
+    [Embed(source = '../assets/fish_growl.mp3')]
+    private const FishGrowlSnd:Class;
+
     [Embed(source = '../assets/male_angler.png')]
     private const IMAGE:Class;
     [Embed(source = '../assets/male_angler_mask.png')]
@@ -31,6 +34,8 @@ package
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {
+        var growl:Sfx = new Sfx(FishGrowlSnd);
+        growl.play();
         FP.world.remove(this);
       }
     }

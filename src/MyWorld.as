@@ -6,6 +6,9 @@ package
 
   public class MyWorld extends World
   {
+    [Embed(source = '../assets/Ambient1.mp3')]
+    private const AmbiantMusic:Class;
+
     public var player:Player;
     public var backdrop:MyBackdrop;
     public var femaleAngler:FemaleAngler;
@@ -13,6 +16,8 @@ package
 
     public function MyWorld()
     {
+      var music:Sfx = new Sfx(AmbiantMusic);
+      music.loop();
       backdrop = new MyBackdrop();
       var backdropEntity:Entity = new Entity();
       backdropEntity.graphic = backdrop;
