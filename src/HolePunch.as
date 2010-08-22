@@ -37,7 +37,7 @@ package
       spot.blend = "add";
                                       
       xOffset = 140        
-      yOffset = 30
+      yOffset = 40
       
     }
     
@@ -55,9 +55,9 @@ package
       for (var i:Number=0; i<light_sources.length;i++){                                         
         var source_obj:Entity = light_sources[i];
         tx = source_obj.x-FP.camera.x-source_obj.width/2+xOffset;
-        ty = source_obj.x-FP.camera.y-source_obj.height/2-yOffset;  
+        ty = source_obj.y-FP.camera.y-source_obj.height/2-yOffset;  
         darkness.drawGraphic(tx, ty, light);
-        //spot.render(new Point(0,0), FP.camera);
+        spot.render(new Point(source_obj.x-source_obj.width/2+xOffset,source_obj.y-source_obj.height/2-yOffset), FP.camera);
       }
                                                                                           
       darkness.render(new Point(0,0), FP.camera); 
