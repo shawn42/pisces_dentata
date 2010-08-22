@@ -12,9 +12,11 @@ package
     [Embed(source = '../assets/female_angler_mask.png')]
     private const MASK:Class;
 
+    private var image:Image;
+    
     public function FemaleAngler()
     {
-      var image:Image = new Image(IMAGE);
+      image = new Image(IMAGE);
       var pixelmask:Pixelmask = new Pixelmask(MASK);
       mask = pixelmask;
       graphic = image;
@@ -22,6 +24,10 @@ package
       width = image.width;
       height = image.height;
     } 
+    
+    public function flip(flipped:Boolean):void {
+      image.flipped = flipped;
+    }
 
     /*override public function update():void*/
     /*{*/
