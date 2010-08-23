@@ -9,7 +9,7 @@ package
     public static var deathWorld:DeathWorld;
     
     public static var VIEWPORT_WIDTH:Number = 1000;
-    public static var VIEWPORT_HEIGHT:Number = 700;
+    public static var VIEWPORT_HEIGHT:Number = 680;
     
     
     public static var HALF_VIEWPORT_WIDTH:Number = VIEWPORT_WIDTH/2;

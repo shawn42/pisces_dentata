@@ -24,13 +24,13 @@ package
 //      var music:Sfx = new Sfx(AmbientMusic);
 //      music.loop();
 
-      femaleAngler = new FemaleAngler(640, 200);
+      femaleAngler = new FemaleAngler(Main.VIEWPORT_WIDTH, Main.VIEWPORT_HEIGHT/2.5);
       femaleAngler.flip(true);
       
       var playerImage:Image = new Image(PlayerImage);
       playerImage.flipped = true;
       playerImage.alpha = 0.0;
-      player = new Entity(80, 300, playerImage);
+      player = new Entity(80,  Main.VIEWPORT_HEIGHT/1.7, playerImage);
       var textEnt:Entity = new Entity();
       Text.size = 32;
       var text:Text = new Text("Pisces Dentata");
@@ -42,8 +42,8 @@ package
       
       FP.screen.color = 0xfdfdff;
       
-      fadeTween.tween(playerImage, 'alpha', 1.0, 60, Ease.cubeIn);
-      femaleEntryTween.tween(femaleAngler, 'x', 320, 200, Ease.bounceInOut);
+      fadeTween.tween(playerImage, 'alpha', 1.0, 1, Ease.cubeIn);
+      femaleEntryTween.tween(femaleAngler, 'x',80, 3, Ease.cubeIn);
     }
 
     override public function update():void
