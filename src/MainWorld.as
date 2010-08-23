@@ -25,6 +25,7 @@ package
     public var tilemap:Tilemap;
     private var sedimentEmitter:Emitter;
     private var sedimentEmitter2:Emitter;
+//    private var displacementEmitter:Displacement;
 
     public function MainWorld()
     {
@@ -81,6 +82,12 @@ package
 			sedimentEmitter2.newType("sediment2", [0, 1, 2]);
 			sedimentEmitter2.setAlpha("sediment2", 0.5, 0);
 			sedimentEmitter2.setMotion("sediment2", FP.rand(2), 45, 900, 360, 5, 300);
+			
+			//displacementEmitter = new Displacement(5, 5);
+			//displacementEmitter.newType("disp", [0, 1, 2]);
+			//displacementEmitter.setAlpha("disp", 0.5, 0);
+			//displacementEmitter.setMotion("disp", FP.rand(2), 45, 900, 360, 5, 300);
+
       add(new HolePunch(females));
     }
     
@@ -101,6 +108,8 @@ package
       }
       sedimentEmitter2.update();
 
+//      displacementEmitter.update();
+
       super.update();
     }
     
@@ -109,6 +118,13 @@ package
       super.render();
       sedimentEmitter.render(new Point, FP.camera);
       sedimentEmitter2.render(new Point, FP.camera);
+      
+//      displacementEmitter.setSource(FP.buffer);
+//      while(displacementEmitter.particleCount < 30)
+//      {
+//        displacementEmitter.emit("disp", FP.world.mouseX, FP.world.mouseX);
+//      }
+//      displacementEmitter.render(new Point, FP.camera);
     }
   }
 }

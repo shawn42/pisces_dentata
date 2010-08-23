@@ -2,12 +2,15 @@ package
 {
   import net.flashpunk.*;
   import net.flashpunk.graphics.*;
+  import net.flashpunk.masks.*;
   import flash.geom.*;
 
-  public class Monkfish extends Entity
+  public class Monkfish extends Enemy
   {
     [Embed(source = '../assets/monkfish.png')]
     private const IMAGE:Class;
+    [Embed(source = '../assets/monkfish_mask.png')]
+    private const MASK:Class;
     [Embed(source = '../assets/fish_growl.mp3')]
     private const FishGrowlSnd:Class;
 
@@ -25,6 +28,7 @@ package
       graphic = spritemap;
       x = x_pos;
       y = y_pos;
+      mask = new Pixelmask(MASK);
     }
 
     override public function update():void
