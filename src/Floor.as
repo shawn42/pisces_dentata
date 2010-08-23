@@ -12,13 +12,13 @@ package
     {
       super();
       type = "Wall";
-      var floorTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, 1664, 240, 16, 16);
-      floorTilemap.setRegion(0,0, 104, 15,0);
+      var floorTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, MainWorld.WIDTH+Main.VIEWPORT_WIDTH, Main.HALF_VIEWPORT_HEIGHT, 16, 16);
+      floorTilemap.setRegion(0,0, (MainWorld.WIDTH+Main.VIEWPORT_WIDTH)/ 16, Main.HALF_VIEWPORT_HEIGHT/16, 0);
       graphic = floorTilemap;
-      width = 1664;
-      height = 240;
-      x = -320;
-      y = 1024;
+      width = MainWorld.WIDTH+Main.VIEWPORT_WIDTH;
+      height = Main.HALF_VIEWPORT_HEIGHT;
+      x = -Main.HALF_VIEWPORT_WIDTH;
+      y = MainWorld.HEIGHT;
     }
     
     override public function update():void

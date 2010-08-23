@@ -8,9 +8,16 @@ package
     public static var openingWorld:OpeningWorld;
     public static var deathWorld:DeathWorld;
     
+    public static var VIEWPORT_WIDTH:Number = 1000;
+    public static var VIEWPORT_HEIGHT:Number = 700;
+    
+    
+    public static var HALF_VIEWPORT_WIDTH:Number = VIEWPORT_WIDTH/2;
+    public static var HALF_VIEWPORT_HEIGHT:Number = VIEWPORT_HEIGHT/2;
+    
     public function Main()
     {
-      super(640, 480, 60, true);
+      super(VIEWPORT_WIDTH, VIEWPORT_HEIGHT, 60, false);
       mainWorld = new MainWorld();
       openingWorld = new OpeningWorld();
       deathWorld = new DeathWorld();

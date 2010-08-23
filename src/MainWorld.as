@@ -22,6 +22,9 @@ package
     
     public var females:Array;
     
+    public static var WIDTH:Number = 1440;
+    public static var HEIGHT:Number = 1100;
+    
     public var tilemap:Tilemap;
     private var sedimentEmitter:Emitter;
     private var sedimentEmitter2:Emitter;
@@ -64,7 +67,7 @@ package
       females.push(new FemaleAngler(otherX,otherY));
       add(females[1]);
 
-      add(new Monkfish(200, 960));
+      add(new Monkfish(200, HEIGHT- 64));
       add(new Eel(400, 100));
       add(new Eel(500, 200));
       add(new Viper(650, 200));

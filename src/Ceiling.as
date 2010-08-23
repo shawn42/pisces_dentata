@@ -9,10 +9,10 @@ package
     {
       super();
       type = "Wall";
-      width = 1664;
-      height = 240;
-      x = -320;
-      y = -240;
+      width = MainWorld.WIDTH+Main.VIEWPORT_WIDTH;
+      height = Main.HALF_VIEWPORT_HEIGHT;
+      x = -Main.HALF_VIEWPORT_WIDTH;
+      y = -Main.HALF_VIEWPORT_HEIGHT;
     }
     
     override public function update():void
