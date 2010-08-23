@@ -28,6 +28,8 @@ package
 
     public function MainWorld()
     {
+      	
+      FP.randomizeSeed();
       var music:Sfx = new Sfx(AmbientMusic);
       music.loop();
       backdrop = new MyBackdrop();
@@ -46,11 +48,20 @@ package
 
       females = new Array();
       var femaleAngler:FemaleAngler;
-      add(femaleAngler = new FemaleAngler(400,400));
-      females.push(femaleAngler);
+      females.push(femaleAngler = new FemaleAngler((Math.random()*570)+100,(Math.random()*600)+100));
+      add(females[0]);
       
-      add(femaleAngler = new FemaleAngler(750,300));
-      females.push(femaleAngler);
+      var otherX:Number = (Math.random()*570)+100;
+      var otherY:Number = (Math.random()*600)+100;
+      while (FP.distanceRects(
+        femaleAngler.x, femaleAngler.y, femaleAngler.width, femaleAngler.height,
+        otherX, otherY, femaleAngler.width, femaleAngler.height) < 125)
+      {
+        otherX = (Math.random()*570)+100;
+        otherY = (Math.random()*600)+100;
+      }
+      females.push(new FemaleAngler(otherX,otherY));
+      add(females[1]);
 
       add(new Monkfish(200, 960));
       add(new Eel(400, 100));
@@ -59,7 +70,7 @@ package
       player.resetPosition();
       add(player);
       
-      FP.console.enable();
+      //FP.console.enable();
 
       sedimentEmitter = new Emitter(SedimentPartsImg, 8, 8);
 			sedimentEmitter.newType("sediment", [0, 1, 2, 3]);
@@ -70,24 +81,16 @@ package
 			sedimentEmitter2.newType("sediment2", [0, 1, 2]);
 			sedimentEmitter2.setAlpha("sediment2", 0.5, 0);
 			sedimentEmitter2.setMotion("sediment2", FP.rand(2), 45, 900, 360, 5, 300);
-//			if(sedimentEmitter.particleCount < 10)
-//      {
-//        sedimentEmitter.emit("sediment", FP.rand(1024), FP.rand(800));
-        //sedimentEmitter.emit("sediment", FP.world.mouseX, FP.world.mouseY);
-//      }
       add(new HolePunch(females));
     }
     
     override public function update():void
     {
       FP.camera = new Point(player.x - (FP.width - player.width) / 2, player.y - (FP.height - player.height) / 2);
-      //if (Input.mouseDown)
-      //{
       
       if(sedimentEmitter.particleCount < 100)
       {
         sedimentEmitter.emit("sediment", FP.rand(1024), FP.rand(800));
-        //sedimentEmitter.emit("sediment", FP.world.mouseX, FP.world.mouseY);
       }
       sedimentEmitter.update();
       

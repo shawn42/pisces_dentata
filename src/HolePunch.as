@@ -43,8 +43,6 @@ package
       darkness.fill(new Rectangle(0,0,FP.width, FP.height), 0x202020);
       var p:Player = Player.instance;
       darkness.drawGraphic(p.x-FP.camera.x-(maleSpot.width/2)+(p.width/2),  p.y-FP.camera.y-(maleSpot.height/2)+(p.height/2), maleSpot);
-      var tx:Number = 0.0;
-      var ty:Number = 0.0;
       for (var i:Number=0; i<light_sources.length;i++){                                         
         var source_obj:Entity = light_sources[i];
         darkness.drawGraphic(

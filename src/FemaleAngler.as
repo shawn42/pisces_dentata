@@ -20,6 +20,7 @@ package
       var pixelmask:Pixelmask = new Pixelmask(MASK);
       mask = pixelmask;
       graphic = image;
+      //flip(FP.rand(2) == 1);
       type = "FemaleAngler";
       width = image.width;
       height = image.height;

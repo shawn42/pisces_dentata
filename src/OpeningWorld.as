@@ -3,9 +3,8 @@ package
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
   import flash.geom.*;
-  import 	net.flashpunk.tweens.misc.*;
-  	import net.flashpunk.utils.Input;
-  	import net.flashpunk.utils.Key;
+  import net.flashpunk.tweens.misc.*;
+  	import net.flashpunk.utils.*;
   	
   public class OpeningWorld extends World
   {
@@ -17,19 +16,21 @@ package
     public var femaleAngler:FemaleAngler;
     public var player:Entity;
     private var ticks:Number = 0;
+    public var femaleEntryTween:VarTween = new VarTween();
+    public var fadeTween:VarTween = new VarTween();
     
     public function OpeningWorld()
     {
 //      var music:Sfx = new Sfx(AmbientMusic);
 //      music.loop();
 
-      femaleAngler = new FemaleAngler(320, 200);
+      femaleAngler = new FemaleAngler(640, 200);
       femaleAngler.flip(true);
       
       var playerImage:Image = new Image(PlayerImage);
       playerImage.flipped = true;
+      playerImage.alpha = 0.0;
       player = new Entity(80, 300, playerImage);
-      
       var textEnt:Entity = new Entity();
       Text.size = 32;
       var text:Text = new Text("Piscis Dentata");
@@ -40,22 +41,26 @@ package
       add(textEnt);
       
       FP.screen.color = 0xfdfdff;
-      //FP.camera = new Point(0,0);
+      
+      fadeTween.tween(playerImage, 'alpha', 1.0, 60, Ease.cubeIn);
+      femaleEntryTween.tween(femaleAngler, 'x', 320, 200, Ease.bounceInOut);
     }
 
     override public function update():void
-    {
-      if (Input.pressed(Key.SPACE))
+    { 
+      if (Input.pressed(Key.ANY)) {
         FP.world = Main.mainWorld;
-        
+      }
       super.update();
       
       ticks += FP.elapsed;
       if (ticks > 1 && count < 2) {
         add(player);
+        addTween(fadeTween);
       } else if (ticks > 3 && count == 2) {
         add(femaleAngler);
-      } else if (ticks > 8) {
+        addTween(femaleEntryTween);
+      } else if (ticks > 6) {
         FP.world = Main.mainWorld;
       }
     }
