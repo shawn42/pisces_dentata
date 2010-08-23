@@ -29,7 +29,7 @@ package
     private var deathWait:Number = 0;
     private var dead:Boolean = false;
     
-    private var followSpeed:Number = 0.3;
+    private var followSpeed:Number = 100;
 
     public static var instance:Player;
     
@@ -52,9 +52,13 @@ package
     override public function update():void
     {
       var followVelocity:Point = new Point(
-        followSpeed * (Input.mouseX - FP.width / 2),
-        followSpeed * (Input.mouseY - FP.height / 2)
+        followSpeed * (Input.mouseX - FP.width / 2) / (FP.width / 2),
+        followSpeed * (Input.mouseY - FP.height / 2) / (FP.height / 2)
       );
+      if (followVelocity.length > followSpeed)
+      {
+        followVelocity.normalize(followSpeed);
+      }
       var dx:Number = followVelocity.x * FP.elapsed;
       var dy:Number = followVelocity.y * FP.elapsed;
       if (dx > 0 && allowMoveRight) 
