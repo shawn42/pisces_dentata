@@ -7,18 +7,15 @@ package
   
   public class DeathWorld extends World
   {
-    [Embed(source = '../assets/male_angler.png')]
-    private const PlayerImage:Class;
-
-    public var femaleAngler:FemaleAngler;
-    public var player:Entity;
     private var ticks:Number = 0;
+    private var text:Text;
+    private var textEnt:Entity;
     
     public function DeathWorld()
     {
-      var textEnt:Entity = new Entity();
+      textEnt = new Entity();
       Text.size = 16;
-      var text:Text = new Text("You slowly dissolve into reproductive bliss as you die.");
+      text = new Text("You are dead.                                                 ");
       textEnt.graphic = text;
       textEnt.x = 10;
       textEnt.y = 40;
@@ -26,6 +23,10 @@ package
       add(textEnt);   
     }
 
+    public function setMessage(message:String):void {
+      text.text = message;
+    }
+    
     override public function update():void
     {
       super.update();

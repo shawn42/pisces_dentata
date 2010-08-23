@@ -11,6 +11,8 @@ package
   {
     [Embed(source = '../assets/fish_growl.mp3')]
     private const FishGrowlSnd:Class;
+    [Embed(source = '../assets/chomp.mp3')]
+    private const ChompSnd:Class;
     [Embed(source = '../assets/male_angler.png')]
     private const IMAGE:Class;
     [Embed(source = '../assets/male_angler_mask.png')]
@@ -86,25 +88,34 @@ package
       {
         var growl:Sfx = new Sfx(FishGrowlSnd);
         growl.play();
-        //FP.world.remove(this);
-        x = 100;
-        y = 100;
+        resetPosition();
+        Main.deathWorld.setMessage("You dissolve slowly in reproductive bliss--until you die.");
         dead = true;
       }
       var enemy:Entity = collide("Enemy", x, y);
       if (enemy)
       {
-        FP.world.remove(this);
+        var chomp:Sfx = new Sfx(ChompSnd);
+        chomp.play();
+        Main.deathWorld.setMessage("You die a pathetic little fish death. Nobody remembers you.");
+        resetPosition();
+        dead = true;
       }
+    }
+    
+    public function resetPosition():void {
+      x = 100;
+      y = 100;
     }
     
     override public function render():void {
 //      HolePunch.darkness.drawGraphic(x-(spot.width/2)+(width/2),  y-(spot.height/2)+(height/2), spot);
-      spot.render(new Point(
-        x-(spot.width/2)+(width/2),
-        y-(spot.height/4)+(height/2)), FP.camera);
-      super.render();
-
+      if (!dead) {
+        spot.render(new Point(
+          x-(spot.width/2)+(width/2),
+          y-(spot.height/4)+(height/2)), FP.camera);
+        super.render();
+      }
     }
   }
 }

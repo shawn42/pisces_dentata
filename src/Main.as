@@ -4,14 +4,14 @@ package
 
   public class Main extends Engine
   {
-    public static var mainWorld:MyWorld;
+    public static var mainWorld:MainWorld;
     public static var openingWorld:OpeningWorld;
     public static var deathWorld:DeathWorld;
     
     public function Main()
     {
       super(640, 480, 60, true);
-      mainWorld = new MyWorld();
+      mainWorld = new MainWorld();
       openingWorld = new OpeningWorld();
       deathWorld = new DeathWorld();
       FP.world = Main.openingWorld;

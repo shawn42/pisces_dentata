@@ -4,7 +4,9 @@ package
 	import net.flashpunk.graphics.*;
   import flash.geom.*;
   import 	net.flashpunk.tweens.misc.*;
-  
+  	import net.flashpunk.utils.Input;
+  	import net.flashpunk.utils.Key;
+  	
   public class OpeningWorld extends World
   {
 //    [Embed(source = '../assets/AmbientBeat1.mp3')]
@@ -43,6 +45,9 @@ package
 
     override public function update():void
     {
+      if (Input.pressed(Key.SPACE))
+        FP.world = Main.mainWorld;
+        
       super.update();
       
       ticks += FP.elapsed;
