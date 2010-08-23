@@ -33,7 +33,7 @@ package
       player = new Entity(80, 300, playerImage);
       var textEnt:Entity = new Entity();
       Text.size = 32;
-      var text:Text = new Text("Piscis Dentata");
+      var text:Text = new Text("Pisces Dentata");
       textEnt.graphic = text;
       textEnt.x = 20;
       textEnt.y = 20;
