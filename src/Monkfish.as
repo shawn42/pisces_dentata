@@ -35,7 +35,14 @@ package
         spritemap.frame = 2;
         var pt:Point = new Point();
         FP.angleXY(pt, FP.angle(x, y, Player.instance.x, Player.instance.y), SPEED);
-        x += pt.x * FP.elapsed;
+        var dx:Number = pt.x * FP.elapsed;
+        if (dx > 0 && Player.instance.x > (x+(width/2))) {
+          x += dx;
+          spritemap.flipped = false;
+        } else if (Player.instance.x < (x+(width/2))) {
+          x += dx;
+          spritemap.flipped = true;
+        }
         y += pt.y * FP.elapsed;
       }
       else if (FP.distance(x, y, Player.instance.x, Player.instance.y) < ATTACK_RADIUS)

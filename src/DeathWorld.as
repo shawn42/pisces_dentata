@@ -15,7 +15,7 @@ package
     {
       textEnt = new Entity();
       Text.size = 16;
-      text = new Text("You are dead.                                                 ");
+      text = new Text("You are dead.",0,0,640,0);
       textEnt.graphic = text;
       textEnt.x = 10;
       textEnt.y = 40;
@@ -33,6 +33,7 @@ package
       FP.screen.color = 0x330000;
       ticks += FP.elapsed;
       if (ticks > 5) {
+        Main.mainWorld = new MainWorld();
         FP.world = Main.mainWorld;
         ticks = 0;
       }

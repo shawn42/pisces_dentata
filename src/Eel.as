@@ -16,13 +16,16 @@ package
     private const ZappySnd:Class;
 
     private const ATTACK_RADIUS:Number = 150;
-    private const SPEED:Number = 20;
+    private const SPEED:Number = 30;
     private var chasingPlayer:Boolean = false;
+    private var spritemap:Spritemap;
     
     public function Eel(x_pos:Number, y_pos:Number)
     {
       type = "Enemy";
-      graphic = new Image(IMAGE);
+      spritemap = new Spritemap(IMAGE, 297, 56);
+      spritemap.add("Wiggle", [0,1,2,1], 0.15, true);
+      graphic = spritemap;
       mask = new Pixelmask(MASK);
       x = x_pos;
       y = y_pos;
@@ -33,9 +36,16 @@ package
       super.update();
       if (chasingPlayer)
       {
+        spritemap.play("Wiggle");
         var pt:Point = new Point();
         FP.angleXY(pt, FP.angle(x, y, Player.instance.x, Player.instance.y), SPEED);
-        x += pt.x * FP.elapsed;
+        var dx:Number = pt.x * FP.elapsed;
+        x += dx;
+        if (dx > 0 && Player.instance.x > (x+(width/2))) {
+          spritemap.flipped = true;
+        } else if (Player.instance.x < (x+(width/2))) {
+          spritemap.flipped = false;
+        }
         y += pt.y * FP.elapsed;
       }
       else if (FP.distance(x, y, Player.instance.x, Player.instance.y) < ATTACK_RADIUS)

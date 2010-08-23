@@ -53,7 +53,8 @@ package
       females.push(femaleAngler);
 
       add(new Monkfish(200, 960));
-      add(new Eel(800, 100));      
+      add(new Eel(400, 100));
+      add(new Eel(500, 200));
       player = new Player();
       player.resetPosition();
       add(player);
