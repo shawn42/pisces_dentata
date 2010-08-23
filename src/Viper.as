@@ -5,15 +5,12 @@ package
   import flash.geom.*;
   import net.flashpunk.masks.*;
 
-  public class Eel extends Enemy
+  public class Viper extends Enemy
   {
-    [Embed(source = '../assets/eel.png')]
+    [Embed(source = '../assets/viper.png')]
     private const IMAGE:Class;
-    [Embed(source = '../assets/eel_mask.png')]
+    [Embed(source = '../assets/viper_mask.png')]
     private const MASK:Class;
-    
-    [Embed(source = '../assets/zappy.mp3')]
-    private const ZappySnd:Class;
 
     private const ATTACK_RADIUS:Number = 150;
     private const SPEED:Number = 30;
@@ -22,11 +19,11 @@ package
     private var spritemap:Spritemap;
     private var wanderTo:Point;
     
-    public function Eel(x_pos:Number, y_pos:Number)
+    public function Viper(x_pos:Number, y_pos:Number)
     {
       type = "Enemy";
-      spritemap = new Spritemap(IMAGE, 297, 56);
-      spritemap.add("Wiggle", [0,1,2,1], 0.15, true);
+      spritemap = new Spritemap(IMAGE, 172, 116);
+      spritemap.add("Wiggle", [0,1], 0.15, true);
       graphic = spritemap;
       mask = new Pixelmask(MASK);
       x = x_pos;
@@ -71,8 +68,6 @@ package
       }
       else if (FP.distance(mouthX(), mouthY(), Player.instance.x, Player.instance.y) < ATTACK_RADIUS)
       {
-        var zappy:Sfx = new Sfx(ZappySnd);
-        zappy.play();
         chasingPlayer = true;
       }
       else
