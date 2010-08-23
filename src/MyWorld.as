@@ -50,6 +50,8 @@ package
 
       add(new Monkfish(200, 960));
       
+      add(new Eel(800, 100));
+      
       player = new Player();
       player.x = 100;
       player.y = 100;
