@@ -70,11 +70,11 @@ package
 
       enemies = new Array();
       
-      //enemies.push(new Monkfish(200, HEIGHT - 64));
+      enemies.push(new Monkfish(200, HEIGHT - 64));
       enemies.push(new Eel(600, 100));
-      //enemies.push(new Eel(900, 900));
-      //enemies.push(new Viper(650, 300));
-      //enemies.push(new Monkfish(820, HEIGHT - 64));
+      enemies.push(new Eel(900, 900));
+      enemies.push(new Viper(650, 300));
+      enemies.push(new Monkfish(820, HEIGHT - 64));
       
       for(var i:Number=0;i<enemies.length;i++)
       {
