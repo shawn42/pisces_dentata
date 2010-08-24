@@ -21,14 +21,15 @@ package
     public var backdrop:MyBackdrop;
     
     public var females:Array;
+    public var enemies:Array;
     
+    // MUST BE IN MULTIPLES OF 16
     public static var WIDTH:Number = 1440;
-    public static var HEIGHT:Number = 1100;
+    public static var HEIGHT:Number = 1104;
     
     public var tilemap:Tilemap;
     private var sedimentEmitter:Emitter;
     private var sedimentEmitter2:Emitter;
-//    private var displacementEmitter:Displacement;
 
     public function MainWorld()
     {
@@ -67,53 +68,62 @@ package
       females.push(new FemaleAngler(otherX,otherY));
       add(females[1]);
 
-      add(new Monkfish(200, HEIGHT- 64));
-      add(new Eel(400, 100));
-      add(new Eel(500, 200));
-      add(new Viper(650, 200));
+      enemies = new Array();
+      
+      enemies.push(new Monkfish(200, HEIGHT - 64));
+      enemies.push(new Eel(600, 100));
+      enemies.push(new Eel(900, 900));
+      enemies.push(new Viper(650, 300));
+      enemies.push(new Monkfish(820, HEIGHT - 64));
+      
+      for(var i:Number=0;i<enemies.length;i++)
+      {
+        add(enemies[i]);
+      }
+      
       player = new Player();
       player.resetPosition();
       add(player);
       
-      //FP.console.enable();
+      FP.console.enable();
 
       sedimentEmitter = new Emitter(SedimentPartsImg, 8, 8);
 			sedimentEmitter.newType("sediment", [0, 1, 2, 3]);
-			sedimentEmitter.setAlpha("sediment", 0.6, 0);
+			sedimentEmitter.setAlpha("sediment", 0.2, 0);
 			sedimentEmitter.setMotion("sediment", 0, 10, 600, 360, 5, 300);
 
       sedimentEmitter2 = new Emitter(OtherSedimentPartsImg, 5, 5);
 			sedimentEmitter2.newType("sediment2", [0, 1, 2]);
-			sedimentEmitter2.setAlpha("sediment2", 0.5, 0);
+			sedimentEmitter2.setAlpha("sediment2", 0.2, 0);
 			sedimentEmitter2.setMotion("sediment2", FP.rand(2), 45, 900, 360, 5, 300);
 			
-			//displacementEmitter = new Displacement(5, 5);
-			//displacementEmitter.newType("disp", [0, 1, 2]);
-			//displacementEmitter.setAlpha("disp", 0.5, 0);
-			//displacementEmitter.setMotion("disp", FP.rand(2), 45, 900, 360, 5, 300);
-
       add(new HolePunch(females));
     }
     
     override public function update():void
     {
+      // TODO SHAWN'S WORKIN ON THIS
+      if(enemies.length == 0)
+      {
+        Main.winWorld.setMessage("You have made the ocean safe...");
+        FP.world = Main.winWorld;
+      }
+      
       FP.camera = new Point(player.x - (FP.width - player.width) / 2, player.y - (FP.height - player.height) / 2);
       
       if(sedimentEmitter.particleCount < 100)
       {
-        sedimentEmitter.emit("sediment", FP.rand(1024), FP.rand(800));
+        sedimentEmitter.emit("sediment", FP.rand(WIDTH), FP.rand(HEIGHT));
       }
       sedimentEmitter.update();
       
       
       if(sedimentEmitter2.particleCount < 100)
       {
-        sedimentEmitter2.emit("sediment2", FP.rand(1024), FP.rand(800));
+        sedimentEmitter2.emit("sediment2", FP.rand(WIDTH), FP.rand(WIDTH));
       }
       sedimentEmitter2.update();
-
-//      displacementEmitter.update();
-
+      
       super.update();
     }
     
@@ -122,13 +132,6 @@ package
       super.render();
       sedimentEmitter.render(new Point, FP.camera);
       sedimentEmitter2.render(new Point, FP.camera);
-      
-//      displacementEmitter.setSource(FP.buffer);
-//      while(displacementEmitter.particleCount < 30)
-//      {
-//        displacementEmitter.emit("disp", FP.world.mouseX, FP.world.mouseX);
-//      }
-//      displacementEmitter.render(new Point, FP.camera);
     }
   }
 }

@@ -7,6 +7,7 @@ package
     public static var mainWorld:MainWorld;
     public static var openingWorld:OpeningWorld;
     public static var deathWorld:DeathWorld;
+    public static var winWorld:WinWorld;
     
     public static var VIEWPORT_WIDTH:Number = 1000;
     public static var VIEWPORT_HEIGHT:Number = 680;
@@ -21,6 +22,7 @@ package
       mainWorld = new MainWorld();
       openingWorld = new OpeningWorld();
       deathWorld = new DeathWorld();
+      winWorld = new WinWorld();
       FP.world = Main.openingWorld;
     }
 

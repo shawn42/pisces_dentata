@@ -29,7 +29,6 @@ package
       x = x_pos;
       y = y_pos;
       wanderTo = new Point(x, y);
-      FP.console.enable();
     }
 
     public function mouthX():Number
