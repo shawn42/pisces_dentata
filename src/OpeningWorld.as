@@ -39,6 +39,15 @@ package
       textEnt.y = 20;
       text.color = 0;
       add(textEnt);
+
+      var textEnt2:Entity = new Entity();
+      Text.size = 16;
+      var text2:Text = new Text("Reject the male anglerfish way of life! Use the females to kill predators. Don't mate!");
+      textEnt2.graphic = text2;
+      textEnt2.x = 10;
+      textEnt2.y = 600;
+      text2.color = 0;
+      add(textEnt2);
       
       FP.screen.color = 0xfdfdff;
       

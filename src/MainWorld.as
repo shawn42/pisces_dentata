@@ -53,7 +53,7 @@ package
 
       females = new Array();
       var femaleAngler:FemaleAngler;
-      females.push(femaleAngler = new FemaleAngler(600, 600));
+      females.push(femaleAngler = new FemaleAngler(300, 600));
       add(females[0]);      
       females.push(new FemaleAngler(800, 900));
       add(females[1]);
@@ -61,8 +61,9 @@ package
       enemies = new Array();
       
       enemies.push(new Monkfish(200, HEIGHT - 64));
+      enemies.push(new Monkfish(500, HEIGHT - 64));
       enemies.push(new Eel(600, 100));
-      enemies.push(new Eel(900, 900));
+      enemies.push(new Eel(100, 900));
       enemies.push(new Viper(650, 300));
       enemies.push(new Monkfish(820, HEIGHT - 64));
       
