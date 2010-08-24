@@ -19,6 +19,7 @@ package
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {
+        Player.chomp.play();
         alive = false;
         FP.world.remove(this);
       }

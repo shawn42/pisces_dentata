@@ -12,7 +12,7 @@ package
     [Embed(source = '../assets/fish_growl.mp3')]
     private const FishGrowlSnd:Class;
     [Embed(source = '../assets/chomp.mp3')]
-    private const ChompSnd:Class;
+    private static const ChompSnd:Class;
     [Embed(source = '../assets/male_angler.png')]
     private const IMAGE:Class;
     [Embed(source = '../assets/male_angler_mask.png')]
@@ -24,13 +24,16 @@ package
     public var allowMoveDown:Boolean = true;
     public var allowMoveLeft:Boolean = true;
     public var allowMoveRight:Boolean = true;
+
     private var spot:Image;
     private var image:Image;
     private var deathWait:Number = 0;
     private var dead:Boolean = false;
     
+    
     private var followSpeed:Number = 100;
 
+    public static var chomp:Sfx = new Sfx(ChompSnd);
     public static var instance:Player;
     
     public function Player()
@@ -99,7 +102,6 @@ package
       var enemy:Entity = collide("Enemy", x, y);
       if (enemy)
       {
-        var chomp:Sfx = new Sfx(ChompSnd);
         chomp.play();
         Main.deathWorld.setMessage("You die a pathetic little fish death. Nobody remembers you.");
         resetPosition();
