@@ -12,10 +12,10 @@ package
     {
       super();
       type = "Wall";
-      var rightTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, Main.HALF_VIEWPORT_WIDTH, MainWorld.HEIGHT, 16, 16);
+      var rightTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, Main.HALF_VIEWPORT_WIDTH, MainWorld.HEIGHT, 64, 64);
       x = MainWorld.WIDTH;
       y = 0;
-      rightTilemap.setRegion(0, 0, Main.HALF_VIEWPORT_WIDTH/16, MainWorld.HEIGHT/16, 0);
+      rightTilemap.setRegion(0, 0, Main.HALF_VIEWPORT_WIDTH/64, MainWorld.HEIGHT/64, 0);
       graphic = rightTilemap;
       width = Main.HALF_VIEWPORT_WIDTH;
       height = MainWorld.HEIGHT;

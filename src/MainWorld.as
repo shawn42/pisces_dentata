@@ -53,19 +53,9 @@ package
 
       females = new Array();
       var femaleAngler:FemaleAngler;
-      females.push(femaleAngler = new FemaleAngler((Math.random()*570)+100,(Math.random()*600)+100));
-      add(females[0]);
-      
-      var otherX:Number = (Math.random()*570)+100;
-      var otherY:Number = (Math.random()*600)+100;
-      while (FP.distanceRects(
-        femaleAngler.x, femaleAngler.y, femaleAngler.width, femaleAngler.height,
-        otherX, otherY, femaleAngler.width, femaleAngler.height) < 125)
-      {
-        otherX = (Math.random()*570)+100;
-        otherY = (Math.random()*600)+100;
-      }
-      females.push(new FemaleAngler(otherX,otherY));
+      females.push(femaleAngler = new FemaleAngler(600, 600));
+      add(females[0]);      
+      females.push(new FemaleAngler(800, 900));
       add(females[1]);
 
       enemies = new Array();

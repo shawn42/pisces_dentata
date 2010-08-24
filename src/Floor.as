@@ -12,8 +12,8 @@ package
     {
       super();
       type = "Wall";
-      var floorTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, MainWorld.WIDTH+Main.VIEWPORT_WIDTH, Main.HALF_VIEWPORT_HEIGHT, 16, 16);
-      floorTilemap.setRegion(0,0, (MainWorld.WIDTH+Main.VIEWPORT_WIDTH) / 16, Main.HALF_VIEWPORT_HEIGHT/16, 0);
+      var floorTilemap:Tilemap = new Tilemap(TILEMAP_IMAGE, MainWorld.WIDTH+Main.VIEWPORT_WIDTH, Main.HALF_VIEWPORT_HEIGHT, 64, 64);
+      floorTilemap.setRegion(0,0, (MainWorld.WIDTH+Main.VIEWPORT_WIDTH)/ 64, Main.HALF_VIEWPORT_HEIGHT/64, 0);
       graphic = floorTilemap;
       width = MainWorld.WIDTH+Main.VIEWPORT_WIDTH;
       height = Main.HALF_VIEWPORT_HEIGHT;

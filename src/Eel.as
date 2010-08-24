@@ -27,6 +27,7 @@ package
       type = "Enemy";
       spritemap = new Spritemap(IMAGE, 297, 56);
       spritemap.add("Wiggle", [0,1,2,1], 9, true);
+      spritemap.add("SlowWiggle", [0,1,2,1], 2, true);
       graphic = spritemap;
       mask = new Pixelmask(MASK);
       x = x_pos;
@@ -76,6 +77,7 @@ package
       }
       else
       {
+        spritemap.play("SlowWiggle");
         if (FP.distance(x, y, wanderTo.x, wanderTo.y) < WANDER_THRESHOLD)
         {
           wanderTo = new Point(FP.rand(1024), FP.rand(1024));
