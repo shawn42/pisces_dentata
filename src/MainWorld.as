@@ -23,9 +23,9 @@ package
     public var females:Array;
     public var enemies:Array;
     
-    // MUST BE IN MULTIPLES OF 16
-    public static var WIDTH:Number = 1440;
-    public static var HEIGHT:Number = 1104;
+    // MUST BE IN MULTIPLES OF 64
+    public static var WIDTH:Number = 1472;
+    public static var HEIGHT:Number = 1152;
     
     public var tilemap:Tilemap;
     private var sedimentEmitter:Emitter;

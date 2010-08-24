@@ -80,7 +80,7 @@ package
         spritemap.play("SlowWiggle");
         if (FP.distance(x, y, wanderTo.x, wanderTo.y) < WANDER_THRESHOLD)
         {
-          wanderTo = new Point(FP.rand(1024), FP.rand(1024));
+          wanderTo = new Point(FP.rand(MainWorld.WIDTH), FP.rand(MainWorld.WIDTH));
         }
         var pt2:Point = new Point();
         FP.angleXY(pt2, FP.angle(x, y, wanderTo.x, wanderTo.y), SPEED/2);
