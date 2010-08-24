@@ -30,7 +30,7 @@ package
       var playerImage:Image = new Image(PlayerImage);
       playerImage.flipped = true;
       playerImage.alpha = 0.0;
-      player = new Entity(80,  Main.VIEWPORT_HEIGHT/1.7, playerImage);
+      player = new Entity(80,  Main.VIEWPORT_HEIGHT/2, playerImage);
       var textEnt:Entity = new Entity();
       Text.size = 32;
       var text:Text = new Text("Pisces Dentata");
@@ -51,7 +51,7 @@ package
       
       FP.screen.color = 0xfdfdff;
       
-      fadeTween.tween(playerImage, 'alpha', 1.0, 1, Ease.quadIn);
+      fadeTween.tween(playerImage, 'alpha', 1.0, 1, Ease.cubeIn);
       femaleEntryTween.tween(femaleAngler, 'x',200, 3, Ease.expoIn);
     }
 
@@ -63,10 +63,10 @@ package
       super.update();
       
       ticks += FP.elapsed;
-      if (ticks > 1 && count < 2) {
+      if (ticks > 1 && count == 2) {
         add(player);
         addTween(fadeTween);
-      } else if (ticks > 3 && count == 2) {
+      } else if (ticks > 3 && count == 3) {
         add(femaleAngler);
         addTween(femaleEntryTween);
       } else if (ticks > 6) {
