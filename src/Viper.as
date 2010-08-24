@@ -76,7 +76,7 @@ package
           wanderTo = new Point(FP.rand(1024), FP.rand(1024));
         }
         var pt2:Point = new Point();
-        FP.angleXY(pt2, FP.angle(x, y, wanderTo.x, wanderTo.y), SPEED);
+        FP.angleXY(pt2, FP.angle(x, y, wanderTo.x, wanderTo.y), SPEED/2);
         var dx2:Number = pt2.x * FP.elapsed;
         x += dx2;
         if (dx2 > 0 && Player.instance.x > (x+(width/2))) {
