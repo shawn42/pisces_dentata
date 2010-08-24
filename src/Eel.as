@@ -26,7 +26,7 @@ package
     {
       type = "Enemy";
       spritemap = new Spritemap(IMAGE, 297, 56);
-      spritemap.add("Wiggle", [0,1,2,1], 0.15, true);
+      spritemap.add("Wiggle", [0,1,2,1], 9, true);
       graphic = spritemap;
       mask = new Pixelmask(MASK);
       x = x_pos;

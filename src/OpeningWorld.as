@@ -42,8 +42,8 @@ package
       
       FP.screen.color = 0xfdfdff;
       
-      fadeTween.tween(playerImage, 'alpha', 1.0, 1, Ease.cubeIn);
-      femaleEntryTween.tween(femaleAngler, 'x',80, 3, Ease.cubeIn);
+      fadeTween.tween(playerImage, 'alpha', 1.0, 1, Ease.quadIn);
+      femaleEntryTween.tween(femaleAngler, 'x',200, 3, Ease.expoIn);
     }
 
     override public function update():void
