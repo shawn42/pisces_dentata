@@ -6,8 +6,10 @@ package
 
   public class Enemy extends Entity
   {
+    public var alive:Boolean;
     public function Enemy()
     {
+      alive = true;
       type = "Enemy";
     }
 
@@ -17,6 +19,7 @@ package
       var femaleAngler:FemaleAngler = collide("FemaleAngler", x, y) as FemaleAngler;
       if (femaleAngler)
       {
+        alive = false;
         FP.world.remove(this);
       }
     }

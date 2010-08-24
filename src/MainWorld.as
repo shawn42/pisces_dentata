@@ -70,11 +70,11 @@ package
 
       enemies = new Array();
       
-      enemies.push(new Monkfish(200, HEIGHT - 64));
+      //enemies.push(new Monkfish(200, HEIGHT - 64));
       enemies.push(new Eel(600, 100));
-      enemies.push(new Eel(900, 900));
-      enemies.push(new Viper(650, 300));
-      enemies.push(new Monkfish(820, HEIGHT - 64));
+      //enemies.push(new Eel(900, 900));
+      //enemies.push(new Viper(650, 300));
+      //enemies.push(new Monkfish(820, HEIGHT - 64));
       
       for(var i:Number=0;i<enemies.length;i++)
       {
@@ -85,7 +85,7 @@ package
       player.resetPosition();
       add(player);
       
-      FP.console.enable();
+      //FP.console.enable();
 
       sedimentEmitter = new Emitter(SedimentPartsImg, 8, 8);
 			sedimentEmitter.newType("sediment", [0, 1, 2, 3]);
@@ -103,7 +103,17 @@ package
     override public function update():void
     {
       // TODO SHAWN'S WORKIN ON THIS
-      if(enemies.length == 0)
+      var stillEnemies:Boolean = false;
+      for(var i:Number=0;i<enemies.length;i++)
+      {
+        FP.console.log(enemies[i].visible);
+        if(enemies[i].alive)
+        {
+          stillEnemies = true;
+          break;
+        }
+      }
+      if(!stillEnemies)
       {
         Main.winWorld.setMessage("You have made the ocean safe...");
         FP.world = Main.winWorld;
